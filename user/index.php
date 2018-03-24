@@ -19,9 +19,7 @@ include "../1/auth_user.php";
 	<script src="../js/jquery.easing.1.3.js"></script>
 	<script src="../js/jquery.isotope.min.js"></script>
 	<script src="../js/jquery.bxslider.min.js"></script>
-	<script type="text/javascript" src="../js/fliplightbox.min.js"></script>
 	<script src="../js/functions.js"></script>
-	<script type="text/javascript">$('.portfolio').flipLightBox()</script>
   <script src="../js/jQuery.js"></script>
   <script src="../js/bootstrap.min.js"></script>
   <script src="../js/moment.js"></script>
@@ -60,9 +58,7 @@ include "../1/auth_user.php";
           </div><!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
               <li class="header"><h4><b><center>Menu Panel</center></b></h4></li>
-			        <li class="active"><a href="artikel.php"><i class="fa fa-book"></i><span>Pengumuman</span></a></li>
-			        
-			        <li><a href="about.php"><i class="fa fa-info-circle"></i><span>Laporan</span></a></li>
+			        <li class="active"><a href="index.php"><i class="fa fa-book"></i><span>Pengumuman</span></a></li>
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -80,12 +76,43 @@ include "../1/auth_user.php";
             <li><i class="fa fa-book"></i> pengumuman</li>
           </ol>
         </section>
-
         <!-- Main content -->
-		<!-- Modal Popup Dosen -->
-		<!-- Modal Popup Dosen Edit -->
-		<!-- Modal Popup untuk delete--> 
-		
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <a href="#"><button class="btn btn-success" type="button" data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-plus"></i> Add</button></a>
+                      <br></br>
+                    <table id="data" class="table table-bordered table-striped table-scalable">
+                      <?php
+                        include "dt_pengumuman.php";
+                      ?>
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </section><!-- /.content -->
+
+      <!-- Modal Popup untuk delete--> 
+      <div class="modal fade" id="modal_delete">
+        <div class="modal-dialog">
+          <div class="modal-content" style="margin-top:100px;">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" style="text-align:center;">Are you sure?</h4>
+            </div>    
+            <div class="modal-footer" style="margin:0px; border-top:0px; text-align:center;">
+              <a href="#" class="btn btn-success" id="delete_link">Yes</a>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
 		
     </div><!-- /.content-wrapper -->
     <?php
@@ -116,7 +143,7 @@ include "../1/auth_user.php";
 							notify.onclick = function(){
 								if (window.confirm(this.tag + ':\n' + this.body)) {
                   $.ajax({
-                    url: "message.php?perihal="+this.tag,
+                    url: "message.php?respons=yes&perihal="+this.tag,
                     type: "GET",
                     dataType: "html",
                     success: function() {
@@ -126,7 +153,7 @@ include "../1/auth_user.php";
                 }
                 else {
                   $.ajax({
-                    url: "message-no.php?perihal="+this.tag,
+                    url: "message.php?respons=no&perihal="+this.tag,
                     type: "GET",
                     dataType: "html",
                     success: function() {

@@ -19,9 +19,9 @@ include "auth_user.php";
 	<script src="../js/jquery.easing.1.3.js"></script>
 	<script src="../js/jquery.isotope.min.js"></script>
 	<script src="../js/jquery.bxslider.min.js"></script>
-	<script type="text/javascript" src="../js/fliplightbox.min.js"></script>
+	
 	<script src="../js/functions.js"></script>
-	<script type="text/javascript">$('.portfolio').flipLightBox()</script>
+	
   <script src="../js/jQuery.js"></script>
   <script src="../js/bootstrap.min.js"></script>
   <script src="../js/moment.js"></script>
