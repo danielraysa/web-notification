@@ -60,9 +60,9 @@ include "auth_user.php";
           </div><!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
               <li class="header"><h4><b><center>Menu Panel</center></b></h4></li>
-			        <li class="active"><a href="about.php"><i class="fa fa-book"></i><span>Pengumuman</span></a></li>
-			        
-			        <li><a href="about.php"><i class="fa fa-info-circle"></i><span>Laporan</span></a></li>
+			        <li><a href="artikel.php"><i class="fa fa-book"></i><span>Pengumuman</span></a></li>
+			        <li><a href="client.php"><i class="fa fa-user"></i><span>Client</span></a></li>
+			        <li class="active"><a href="about.php"><i class="fa fa-info-circle"></i><span>Laporan</span></a></li>
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -90,7 +90,7 @@ include "auth_user.php";
 
                 </div><!-- /.box-header -->
                 <div class="box-body">
-				<a href="#"><button class="btn btn-success" type="button" data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-plus"></i> Add</button></a>
+				
                   <br></br>
 				  <table id="data" class="table table-bordered table-striped table-scalable">
 						<?php
