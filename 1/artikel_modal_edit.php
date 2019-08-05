@@ -20,7 +20,7 @@ while($r = mysqli_fetch_array($query)){
 						<h4 class="modal-title">Edit Pengumuman</h4>
 					</div>
 					<div class="modal-body">
-						<form action="artikel_edit.php" name="modal_popup" enctype="multipart/form-data" method="post">
+						<form action="artikel_edit.php" name="modal_popup" method="post">
 							<input name="id" type="hidden" value="<?php echo $r["nomor"]; ?>"/>
 							<div class="form-group">
 								<label>Subjeck</label>
@@ -32,15 +32,15 @@ while($r = mysqli_fetch_array($query)){
 									</div>
 							</div>
 							
-							<div class="form-group">
+					<!--	<div class="form-group">
 								<label>To</label>
-									<div class="input-group">
-										<div class="input-group-addon">
-											<i class="fa fa-book"></i>
-										</div>
-										<input name="to" type="text" class="form-control" placeholder="To"/>
+								<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fa fa-book"></i>
 									</div>
-							</div>
+									<input name="to" type="text" class="form-control" placeholder="To"/>
+								</div>
+							</div> -->
 							
 							<div class="form-group" >
 							 <label>Tanggal Kirim</label>

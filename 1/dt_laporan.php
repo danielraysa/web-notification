@@ -1,16 +1,21 @@
 				<thead>
 					<tr>
 						<th width="4%">No</th>
-						<th width="30%">Subjeck</th>
-						<th width="20%">Penerima</th>
-						<th width="20%">Respons</th>
-						<th width="15%">Tanggal Respons</th>
-						<th width="11%">Action</th>
+						<th width="10%">Subjeck</th>
+						
+						<th width="10%">Setuju</th>
+						<th width="10%">Tidak Setuju</th>
+						<th width="10%">Belum Respon</th>
+						
 					</tr>
 				</thead>
 				<tbody>
 					<?php
-						$querydosen = mysqli_query ($konek, "SELECT * FROM pesan p JOIN user u ON p.userid = u.iduser");
+						$querydosen = mysqli_query ($konek, "select p1.perihal, p1.isi,
+						sum(case p.agreement when 'Ya' then 1 else 0 end) as S, 
+						sum(case p.agreement when 'Tidak' then 1 else 0 end) as TS,
+						sum(case when p.agreement IS NULL then 1 else 0 end) as notrespond 
+						from pesan p join pengumuman p1 on p.nomor = p1.nomor group by p.nomor");
 						if($querydosen == false){
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}
@@ -21,13 +26,11 @@
 								<tr>
 									<td align=center>".$i."</td>
 									<td>".$ar['perihal']."</td>
-									<td>".$ar['username']."</td>
-									<td>".$ar['agreement']."</td>
-									<td>".$ar['tanggal']."</td>
-									<td align=center>
-									<a href='#' class='open_modal' id='$ar[nomor]'>Edit</a> |
-									<a href='#' onClick='confirm_delete(\"artikel_delete.php?nomor=$ar[nomor]\")'>Delete</a>
-									</td>
+						
+									<td>".$ar['S']."</td>
+									<td>".$ar['TS']."</td>
+									<td>".$ar['notrespond']."</td>
+									
 								</tr>";
 						$i++;		
 						}

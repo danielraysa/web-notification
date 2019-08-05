@@ -3,14 +3,13 @@
 include "../koneksi.php";
 
 $nomor	= $_GET["nomor"];
-
-$hapus=mysqli_query($konek, "SELECT * FROM pengumuman WHERE nomor='$nomor'");
-    $r=mysqli_fetch_array($hapus);
- 
-if($delete = mysqli_query ($konek, "DELETE FROM pengumuman WHERE nomor='$nomor'")){
-	header("Location: artikel.php");
-	exit();
+$delete = mysqli_query ($konek, "DELETE FROM pesan WHERE nomor=".$nomor.""); 
+$delete1 = mysqli_query ($konek, "DELETE FROM pengumuman WHERE nomor=".$nomor."");
+if (!$delete || !$delete1){
+	die ("Terdapat Kesalahan : ".mysqli_error($konek));	
 }
-die ("Terdapat Kesalahan : ".mysqli_error($konek));
+else {
+	header("Location: artikel.php");
+}
 
 ?>
